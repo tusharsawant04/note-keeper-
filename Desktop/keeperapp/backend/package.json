@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "type": "module",
+   
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node index.js", 
+  "heroku postbuild":"NPM_CONFIG_PRODUCTION=false npm install  --prefix frontend/keeper-app  && run build/keeper-app"
   },
   "author": "",
   "license": "ISC",
@@ -13,7 +16,6 @@
     "cors": "^2.8.5",
     "express": "^4.18.1",
     "mongoose": "^6.4.0",
-    "nodeman": "^1.1.2",
-    "nodemon": "^2.0.18"
+    "nodeman": "^1.1.2"
   }
 }

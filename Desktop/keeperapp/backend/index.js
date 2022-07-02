@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 
 
 
-const port= process.env.port||5000;
+const PORT= process.env.PORT||5000;
 
 const app=express()
 
@@ -83,7 +83,14 @@ app.post("/api/delete",(req,res)=>{
     })
 })
 
-app.listen(5000,()=>{
-    console.log("backend created at post 3001")
+if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
+    app.use(express.static('frontend/keeper-app/build'));
+    app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/frontend/keeper-app/build/index.html'));
+    });
+   }
+
+app.listen(PORT,()=>{
+    console.log("backend created at")
 }
 )
